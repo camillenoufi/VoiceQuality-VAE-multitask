@@ -1,0 +1,38 @@
+# general
+seed: 23
+
+# data
+datapath_train: '/Volumes/GoogleDrive/My\ Drive/Research/VQM-VAE/data/VocalSet/train/split_1s'
+datapath_valid: '/Volumes/GoogleDrive/My\ Drive/Research/VQM-VAE/data/VocalSet/train/split_1s'
+datapath_test:  '/Volumes/GoogleDrive/My\ Drive/Research/VQM-VAE/data/VocalSet/train/split_1s'
+sr: 44100
+duration: 1
+batch_size: 32
+num_workers: 0
+n_mels: 80
+n_fft: 1024
+win_length: 1024
+hop_length: 256
+data_mean: './data_mean.pt'  # for overall normalization use -41.5759 (db)
+data_std:  './data_std.pt'  # for overall normalization use 38.5646 (db)
+db_range: [-90, -5]
+
+# training
+start_lr: 0.0001
+epochs: 100
+val_every: 10
+log_pictures: false
+
+# model
+model_type: 'leakyrelu'  # also pix_shuffle & pix_shuffle2
+fc_hidden1: 512
+fc_hidden2: 1024
+fc_hidden3: 4096  # 896 for pix_shuffle2
+lspace_size: 256
+
+# loss
+loss_type: 'auxiliary' # also vae
+rec_weight: 0.99
+kld_weight: 0.01
+mse_weight: 0.05
+kld_exp: 1.2
